@@ -7,7 +7,7 @@ public:
         else
             return !s.empty() && (p[0] == '.' || s[0] == p[0]) && isMatch(s.substr(1), p.substr(1));
     }
-    bool isMatch(string s, string p){
+    bool isMatch2(string s, string p){
         int m = s.size(), n = p.size();
         vector<vector<bool>> dp(m + 1, vector<bool>(n + 1, false));
         dp[0][0] = true;
@@ -20,5 +20,18 @@ public:
             }
         }
         return dp[m][n];
+    }
+    bool isMatch(string s, string p){
+        if(s[0] == '\0' && p[0] == '\0') return true;
+        if(s[0] != '\0' && p[0] == '\0') return false;
+        if(p[1] == '*'){
+            if(s[0] == p[0] || p[0] == '.' && s[0] != '\0')
+                return isMatch(s.substr(1), p) || isMatch(s.substr(1), p.substr(2)) || isMatch(s, p.substr(2));
+            else
+                return isMatch(s, p.substr(2));
+        }
+        if(p[0] == s[0] || p[0] == '.' && s[0] != '\0')
+            return isMatch(s.substr(1), p.substr(1));
+        return false;
     }
 };
