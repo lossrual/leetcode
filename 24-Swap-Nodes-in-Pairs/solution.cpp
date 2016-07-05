@@ -8,7 +8,7 @@
  */
 class Solution {
 public:
-    ListNode* swapPairs(ListNode* head) {
+    ListNode* swapPairs1(ListNode* head) {
         ListNode dummy(0);
         ListNode* p = head;
         ListNode* dd = &dummy;
@@ -23,5 +23,12 @@ public:
             p = nxt;
         }
         return dummy.next;
+    }
+    ListNode* swapPairs(ListNode* head) {
+       if(!head || !head->next) return head;
+       ListNode* nxt = head->next;
+       head->next = swapPairs(head->next->next);
+       nxt->next = head;
+       return nxt;
     }
 };
