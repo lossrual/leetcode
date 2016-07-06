@@ -25,6 +25,6 @@ Special thanks to [@DjangoUnchained](https://leetcode.com/discuss/user/DjangoUnc
 
 <div>
 
-<div id="tags" class="btn btn-xs btn-warning">Show Tags</div>
+<div id="tags" class="btn btn-xs btn-warning">Hide Tags</div>
 
-<span class="hidebutton">[Linked List](/tag/linked-list/)</span></div>
+<span class="hidebutton" style="display: inline;">[Linked List](/tag/linked-list/)</span></div>
