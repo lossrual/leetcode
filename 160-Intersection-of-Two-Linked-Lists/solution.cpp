@@ -19,5 +19,6 @@ public:
             if(p1 == nullptr) p1 = headB;
             if(p2 == nullptr) p2 = headA;
         }
+        return p1;
     }
 };
