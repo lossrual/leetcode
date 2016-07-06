@@ -33,9 +33,9 @@ Special thanks to [@stellari](https://oj.leetcode.com/discuss/user/stellari) for
 
 <div>
 
-<div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
+<div id="company_tags" class="btn btn-xs btn-warning">Hide Company Tags</div>
 
-<span class="hidebutton">[Airbnb](/company/airbnb/) [Amazon](/company/amazon/) [Bloomberg](/company/bloomberg/) [Microsoft](/company/microsoft/)</span></div>
+<span class="hidebutton" style="display: inline;">[Airbnb](/company/airbnb/) [Amazon](/company/amazon/) [Bloomberg](/company/bloomberg/) [Microsoft](/company/microsoft/)</span></div>
 
 <div>
 
