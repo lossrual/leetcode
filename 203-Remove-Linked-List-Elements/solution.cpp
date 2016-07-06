@@ -9,15 +9,15 @@
 class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
+        if(!head) return head;
         ListNode* dummy = new ListNode(0);
+        ListNode*p = dummy;
         dummy->next = head;
-        ListNode* p = dummy;
-        while(p){
-            if(p->next && p->next->val == val){
+        while(p->next){
+            if(p->next->val == val){
                 p->next = p->next->next;
-            }else{
+            }else
                 p = p->next;
-            }
         }
         return dummy->next;
     }
