@@ -9,15 +9,15 @@
 class Solution {
 public:
     ListNode* sortList(ListNode* head) {
-        if(head == nullptr || head->next == nullptr) return head;
-        ListNode *fast = head->next, *slow = head;
-        while(fast && fast->next){
-            fast = fast->next->next;
+        if(!head || !head->next) return head;
+        ListNode *fast = head, *slow = head;
+        while(fast->next && fast->next->next){
             slow = slow->next;
+            fast = fast->next->next;
         }
-        ListNode* head_mid = slow->next;
+        ListNode* mid = slow->next;
         slow->next = nullptr;
-        return merge(sortList(head),sortList(head_mid));
+        return merge(sortList(head),sortList(mid));
     }
 private:
     ListNode* merge(ListNode* l1, ListNode* l2){
