@@ -34,7 +34,7 @@ public:
         }
         return dummy->next;
     }
-    RandomListNode *copyRandomList(RandomListNode *head) {
+    RandomListNode *copyRandomList2(RandomListNode *head) {
         if(!head) return head;
         RandomListNode* p1 = head;
         RandomListNode* p2 = new RandomListNode(head->label);
@@ -63,15 +63,17 @@ public:
         return mp[head];
     }
     
-    RandomListNode *copyRandomList2(RandomListNode *head) {
-        if(head == nullptr) return nullptr;
+    RandomListNode *copyRandomList(RandomListNode *head) {
+        if(!head) return head;
         RandomListNode* p = head;
+        //复制
         while(p){
             RandomListNode* newnode = new RandomListNode(p->label);
             newnode->next = p->next;
             p->next = newnode;
             p = p->next->next;
         }
+        //改random
         p = head;
         while(p){
             if(p->random){
@@ -79,13 +81,15 @@ public:
             }
             p = p->next->next;
         }
+        //拆分
         p = head;
-        RandomListNode* newhead= head->next;
+        RandomListNode* newhead = head->next;
         while(p){
-            RandomListNode* nxt = p->next;
+            RandomListNode* newnode = p->next;
             p = p->next = p->next->next;
-            if(nxt->next)
-                nxt->next = nxt->next->next;
+            if(newnode->next){
+                newnode->next = newnode->next->next;
+            }
         }
         return newhead;
     }
