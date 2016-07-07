@@ -9,6 +9,7 @@
  */
 class Solution {
 public:
+/* 非递归
     bool isValidBST(TreeNode* root) {
         if(!root) return true;
         vector<int> vs = InorderTraversal(root);
@@ -37,4 +38,15 @@ public:
         }
         return res;   
     }
+    */
+    //递归
+    bool isValidBST(TreeNode* root) {
+        return Valid(root, LONG_MIN, LONG_MAX);
+    }
+    bool Valid(TreeNode* root, long lower, long upper){
+        if(!root) return true;
+        if(root->val >= upper || root->val <= lower) return false;
+        return Valid(root->left, lower, root->val) && Valid(root->right, root->val, upper);
+    }
+    
 };
