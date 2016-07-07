@@ -39,18 +39,23 @@ public:
         RandomListNode* p1 = head;
         RandomListNode* p2 = new RandomListNode(head->label);
         unordered_map<RandomListNode*, RandomListNode*> mp;
-        while(p1->next){
-            if(mp.count(p1->next)){
-                p2->next = mp[p1->next];
-            }else{
-                p2->next = new RandomListNode(p1->next->label);
-                mp[p1->next] = p2->next;
+        mp[head] = p2;
+        while(p1){
+            if(p1->next){
+                if(mp.count(p1->next)){
+                    p2->next = mp[p1->next];
+                }else{
+                    p2->next = new RandomListNode(p1->next->label);
+                    mp[p1->next] = p2->next;
+                }
             }
-            if(mp.count(p1->random)){
-                p2->random = mp[p1->random];
-            }else{
-                p2->random = new RandomListNode(p1->random->label);
-                mp[p1->random] = p2->random;
+            if(p1->random){
+                if(mp.count(p1->random)){
+                    p2->random = mp[p1->random];
+                }else{
+                    p2->random = new RandomListNode(p1->random->label);
+                    mp[p1->random] = p2->random;
+                }
             }
             p1 = p1->next;
             p2 = p2->next;
