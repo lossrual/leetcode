@@ -65,33 +65,27 @@ public:
     
     RandomListNode *copyRandomList2(RandomListNode *head) {
         if(head == nullptr) return nullptr;
-        RandomListNode* cur = head;
-        //添加重复的节点
-        while(cur != nullptr){
-            RandomListNode* newnode = new RandomListNode(cur->label);
-            //link newnode to new list
-            newnode->next = cur->next;
-            cur->next = newnode;
-            cur = cur->next->next;
+        RandomListNode* p = head;
+        while(p){
+            RandomListNode* newnode = new RandomListNode(p->label);
+            newnode->next = p->next;
+            p->next = newnode;
+            p = p->next->next;
         }
-        //更改random指针
-        cur = head;
-        while(cur != nullptr){
-            if(cur->random != nullptr){
-                cur->next->random = cur->random->next;
+        p = head;
+        while(p){
+            if(p->random){
+                p->next->random = p->random->next;
             }
-            cur = cur->next->next;
+            p = p->next->next;
         }
-        //split lists
-        cur = head;
-        RandomListNode* newhead = head->next;
-        while(cur != nullptr){
-            RandomListNode* newnode = cur->next;
-            cur->next = cur->next->next;
-            cur = cur->next;
-            if(newnode->next != nullptr){
-                newnode->next = newnode->next->next;
-            }
+        p = head;
+        RandomListNode* newhead= head->next;
+        while(p){
+            RandomListNode* nxt = p->next;
+            p = p->next = p->next->next;
+            if(nxt->next)
+                nxt->next = nxt->next->next;
         }
         return newhead;
     }
