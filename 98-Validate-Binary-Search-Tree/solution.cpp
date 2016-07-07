@@ -10,6 +10,7 @@
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
+        if(!root) return true;
         vector<int> vs = InorderTraversal(root);
         for(int i = 0; i < vs.size() - 1; i++){
             //std::cout << vs[i] << ' ';
