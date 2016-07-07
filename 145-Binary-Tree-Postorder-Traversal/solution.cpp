@@ -9,13 +9,7 @@
  */
 class Solution {
 public:
-    vector<int> postorderTraversal1(TreeNode* root) {
-        vector<int> res;
-        postorderTraversal(root, res);
-        return res;
-    }
-    //后序遍历需要访问两次根节点
-    vector<int> postorderTraversal(TreeNode* root){
+    vector<int> postorderTraversal(TreeNode* root) {
         vector<int> res;
         if(!root) return res;
         stack<TreeNode*> s;
@@ -34,28 +28,8 @@ public:
                     last = top;
                     s.pop();
                 }
-                /*
-                if(top->right){
-                    cur = top->right;
-                }else{
-                    res.push_back(top->val);
-                    //last = top;
-                    s.pop();
-                }*/
             }
         }
         return res;
     }
-private:
-    void postorderTraversal(TreeNode* root, vector<int>& res){
-        if(!root) return;
-        TreeNode* tmp = root;
-        postorderTraversal(tmp->left, res);
-        postorderTraversal(tmp->right, res);
-        res.push_back(tmp->val);
-    }
 };
-
-
-
-
