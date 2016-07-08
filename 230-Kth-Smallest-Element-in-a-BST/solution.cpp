@@ -9,9 +9,23 @@
  */
 class Solution {
 public:
-    int kthSmallest(TreeNode* root, int k) {
+    int kthSmallest1(TreeNode* root, int k) {
         vector<int> vs = InorderTraversal(root);
         return vs[k - 1];
+    }
+    int kthSmallest(TreeNode* root, int k) {
+        int count = CountNode(root->left);
+        if(k <= count){
+            return kthSmallest(root->left, k);
+        }else if(k > count + 1){
+            return kthSmallest(root->right, k - count - 1);
+        }else
+            return root->val;
+    }
+private:
+    int CountNode(TreeNode* root){
+        if(!root) return 0;
+        return CountNode(root->left) + CountNode(root->right) + 1;
     }
     vector<int> InorderTraversal(TreeNode* root){
         vector<int> res;
