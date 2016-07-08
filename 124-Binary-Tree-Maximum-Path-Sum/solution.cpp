@@ -9,8 +9,13 @@
  */
 class Solution {
 public:
+/*
     int maxPathSum(TreeNode* root) {
-        if(!root) return 0;
+        //if(!root) return 0;
+        int path = INT_MIN;
+        path = helper(root, path);
+        return path;
+        
         if(!root->left && !root->right) return root->val;
         vector<int> left; vector<int> right;
         int path = root->left->val;
@@ -19,16 +24,41 @@ public:
         helper(root->right, right, path);
         sort(left.begin(), left.end());
         sort(right.begin(), right.end());
-        //std::cout << left[left.size() - 1] << ' ' << right[right.size() - 1] << std::endl;
         return left[left.size() - 1] + right[right.size() - 1] + root->val;
+        
+        
     }
-    void helper(TreeNode* root, vector<int>& res, int path){
-        if(!root) return;
-        if(!root->left && !root->right){
-            res.push_back(path);
-            return;
-        }
-        if(root->left) helper(root->left, res, path + root->left->val);
-        if(root->right) helper(root->right, res, path + root->right->val);
+    int helper(TreeNode* root, int path){
+        //int l = 0, r = 0;
+        if(!root) return 0;
+        int l = max(0, helper(root->left, path));
+        int r = max(0, helper(root->right, path));
+        path = max(path, l + r + root->val);
+        return max(l, r) + root->val;
     }
+*/
+    int maxPathSum(TreeNode* root) {
+        int maxpath = INT_MIN;
+        //vector<int> res;
+        int res =  dfs(root, maxpath);
+        if(res > maxpath)
+            maxpath = res;
+        return maxpath;
+        //sort(res.begin(), res.end());
+        //return res[res.size() - 1];
+        //return maxpath;
+    }
+    int dfs(TreeNode* root, int& maxpath){
+        if(!root) return 0;
+        //if(!root->left && !root->right){
+        //    res.push_back(maxpath);
+        //    return res;
+        //}
+        int l = max(0, dfs(root->left, maxpath));
+        int r = max(0, dfs(root->right, maxpath));
+        maxpath = max(maxpath, l + r + root->val);
+        return max(l, r)+ root->val;
+        //int k =  max(l, r) + root->val;
+    }
+
 };
