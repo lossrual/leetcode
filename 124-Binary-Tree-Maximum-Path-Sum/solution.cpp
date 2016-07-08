@@ -11,6 +11,7 @@ class Solution {
 public:
     int maxPathSum(TreeNode* root) {
         if(!root) return 0;
+        if(!root->left && !root->right) return root->val;
         vector<int> left; vector<int> right;
         int path = root->left->val;
         helper(root->left, left, path);
