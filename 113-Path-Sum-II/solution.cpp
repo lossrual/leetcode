@@ -23,8 +23,8 @@ public:
                 res.push_back(path);
             }
         }
-        helper(root->left, sum - root->val, res, path);
-        helper(root->right, sum - root->val, res, path);
+        if(root->left) helper(root->left, sum - root->val, res, path);
+        if(root->right) helper(root->right, sum - root->val, res, path);
         path.pop_back();
     }
 };
