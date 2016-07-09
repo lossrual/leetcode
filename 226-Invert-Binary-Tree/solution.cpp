@@ -24,11 +24,14 @@ public:
         TreeNode* cur = root;
         q.push(root);
         while(!q.empty()){
-            cur = q.front();
-            q.pop();
-            if(cur->left) q.push(cur->left);
-            if(cur->right) q.push(cur->right);
-            swap(cur->left, cur->right);
+            int len = q.size();
+            for(int i = 0; i < len; i++){
+                auto node = q.front();
+                if(node->left) q.push(node->left);
+                if(node->right) q.push(node->right);
+                swap(node->left, node->right);
+                q.pop();
+            }
         }
         return root;
     }
