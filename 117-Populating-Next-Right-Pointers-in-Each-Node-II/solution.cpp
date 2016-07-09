@@ -10,12 +10,9 @@ class Solution {
 public:
     void connect(TreeLinkNode *root) {
         if(!root) return;
-        TreeLinkNode* cur = nullptr;
-        TreeLinkNode* head = root;
-        TreeLinkNode* pre = nullptr;
+        TreeLinkNode* head = root, *cur = nullptr, *pre = nullptr;
         while(head){
-            cur = head;
-            head = nullptr, pre = nullptr;
+            cur = head, head = nullptr, pre = nullptr;
             while(cur){
                 if(cur->left){
                     if(pre){
@@ -24,7 +21,7 @@ public:
                         head = cur->left;
                     }
                     pre = cur->left;
-                }
+                }    
                 if(cur->right){
                     if(pre){
                         pre->next = cur->right;
@@ -33,8 +30,8 @@ public:
                     }
                     pre = cur->right;
                 }
-                cur = cur->next;   
+                cur = cur->next;    
             }
         }
-    }
+    } 
 };
