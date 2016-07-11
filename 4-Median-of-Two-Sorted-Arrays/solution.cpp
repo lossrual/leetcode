@@ -1,26 +1,24 @@
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        int len = (nums1.size() + nums2.size()) >> 2;
-        int len1 = nums1.size(), len2 = nums2.size();
-        if(len & 0x1){
-            return findKthElement(nums1, len1, nums2, len2, len / 2 + 1);
+        int m = nums1.size(), n = nums2.size();
+        int total = m + n;
+        if(total & 0x1){
+            return helper(nums1, m, nums2, n, total / 2 + 1, 0, 0);
         }else{
-            return (findKthElement(nums1, len1, nums2, len2, len / 2) + findKthElement(nums1, len1, nums2, len2, len / 2 + 1)) / 2;
+            return (helper(nums1, m, nums2, n, total / 2 + 1, 0, 0) + helper(nums1, m, nums2, n, total / 2, 0, 0)) / 2;
         }
     }
-    
-    double findKthElement(vector<int>  nums1, int len1, vector<int>& nums2, int len2, int k){
-        if(len1 > len2) return findKthElement(nums2, len2, nums1, len1, k);
-        if(len1 == 0) return nums2[k - 1];
-        if(k == 1) return min(nums1[0], nums2[0]);
-        int i = min(len1, k / 2), j = k - i;
-        if(nums1[i - 1] < nums2[j - 1]){
-            return findKthElement(nums1 + i, len1 - i, nums2, len2, k - i);
-        }else if(nums1[i - 1] > nums[j - 1]){
-            return findKthElement(num1, len1, nums2 + j, len2 - j, k - j);
+    double helper(vector<int>& nums1, int m, vector<int>& nums2, int n, int k, int start1, int start2){
+        if(m > n) return helper(nums2, n, nums1, m, k, start2, start1);
+        if(m == 0) return nums2[k - 1];
+        if(k == 1) return min(nums1[start1], nums2[start2]);
+        int a = min(m, k / 2), b = k - a;
+        if(nums1[start1 + a - 1] <= nums2[start2 + b - 1]){
+            return helper(nums1, m - a, nums2, n, k - a, start1 + a, start2);
         }else{
-            return nums1[i - 1];
+            return helper(nums1, m, nums2, n - b, k - b, start1, start2 + b);
         }
+        
     }
 };
