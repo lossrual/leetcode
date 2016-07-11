@@ -14,15 +14,15 @@ Note: You may not slant the container.
 
 <div>
 
-<div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
+<div id="company_tags" class="btn btn-xs btn-warning">Hide Company Tags</div>
 
-<span class="hidebutton">[Bloomberg](/company/bloomberg/)</span></div>
+<span class="hidebutton" style="display: inline;">[Bloomberg](/company/bloomberg/)</span></div>
 
 <div>
 
-<div id="tags" class="btn btn-xs btn-warning">Show Tags</div>
+<div id="tags" class="btn btn-xs btn-warning">Hide Tags</div>
 
-<span class="hidebutton">[Array](/tag/array/) [Two Pointers](/tag/two-pointers/)</span></div>
+<span class="hidebutton" style="display: inline;">[Array](/tag/array/) [Two Pointers](/tag/two-pointers/)</span></div>
 
 <div>
 
