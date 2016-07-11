@@ -14,7 +14,7 @@ public:
         return 0;
     }
     //O(nlogn)
-    int findDuplicate(vector<int>& nums) {
+    int findDuplicate2(vector<int>& nums) {
         if(nums.size() == 0) return 0;
         int begin = 1, end = nums.size() - 1;
         while(begin < end){
@@ -31,5 +31,22 @@ public:
             }
         }
         return begin;
+    }
+    int findDuplicate(vector<int>& nums) {
+        if(nums.size() == 0) return 0;
+        int slow = nums[0];
+        int fast = nums[nums[0]];
+        if(nums.size() > 1){
+            while(slow != fast){
+                slow = nums[slow];
+                fast = nums[nums[fast]];
+            }
+            fast = 0;
+            while(fast != slow){
+                fast = nums[fast];
+                slow = nums[slow];
+            }
+        }
+        return slow;
     }
 };
