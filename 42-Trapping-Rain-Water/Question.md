@@ -25,9 +25,9 @@ The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In th
 
 <div>
 
-<div id="tags" class="btn btn-xs btn-warning">Show Tags</div>
+<div id="tags" class="btn btn-xs btn-warning">Hide Tags</div>
 
-<span class="hidebutton">[Array](/tag/array/) [Stack](/tag/stack/) [Two Pointers](/tag/two-pointers/)</span></div>
+<span class="hidebutton" style="display: inline;">[Array](/tag/array/) [Stack](/tag/stack/) [Two Pointers](/tag/two-pointers/)</span></div>
 
 <div>
 
