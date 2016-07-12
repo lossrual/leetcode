@@ -22,10 +22,10 @@ Here are few examples.
 
 <div id="tags" class="btn btn-xs btn-warning">Show Tags</div>
 
-<span class="hidebutton">[Array](/tag/array/) [Binary Search](/tag/binary-search/)</span></div>
+<span class="hidebutton" style="display: none;">[Array](/tag/array/) [Binary Search](/tag/binary-search/)</span></div>
 
 <div>
 
-<div id="similar" class="btn btn-xs btn-warning">Show Similar Problems</div>
+<div id="similar" class="btn btn-xs btn-warning">Hide Similar Problems</div>
 
-<span class="hidebutton">[(E) First Bad Version](/problems/first-bad-version/)</span></div>
+<span class="hidebutton" style="display: inline;">[(E) First Bad Version](/problems/first-bad-version/)</span></div>
