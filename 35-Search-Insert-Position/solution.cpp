@@ -7,7 +7,7 @@ public:
             int mid = (low + high) / 2;
             if(nums[mid] == target) return mid;
             if(nums[mid] > target){
-                high = mid;
+                high = mid - 1;
             }else{
                 low = mid + 1;
                 //std::cout << low << std::endl;
