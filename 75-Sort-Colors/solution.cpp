@@ -23,7 +23,7 @@ public:
         }
     }
     //one pass
-    void sortColors(vector<int>& nums) {
+    void sortColors2(vector<int>& nums) {
         int two = 0, one = 0, zero = 0;
         for(auto c: nums){
             if(c == 2){
@@ -35,6 +35,19 @@ public:
                 nums[two++] = 2;
                 nums[one++] = 1;
                 nums[zero++] = 0;
+            }
+        }
+    }
+    void sortColors(vector<int>& nums) {
+        int left = 0, right = nums.size() - 1;
+        int i = 0;
+        while(i <= right){
+            if(nums[i] == 0){
+                swap(nums[i++], nums[left++]);
+            }else if(nums[i] == 2){
+                swap(nums[i], nums[right--]);
+            }else{
+                i++;
             }
         }
     }
