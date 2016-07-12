@@ -40,22 +40,22 @@ public:
      vector<int> searchRange(vector<int>& nums, int target) {
          vector<int> res;
          if(nums.size() == 0) return res;
-         int low = 0, high = nums.size();
+         int low = 0, high = nums.size() - 1;
          int left, right;
-         while(low < high){
+         while(low <= high){
              int mid = (low + high) / 2;
              if(nums[mid] >= target){
-                 high = mid;
+                 high = mid - 1;
              }else{
                  low = mid + 1;
              }
          }
          left = low;
-         low = 0, high = nums.size();
-         while(low < high){
+         low = 0, high = nums.size() - 1;
+         while(low <= high){
              int mid = (low + high) / 2;
              if(nums[mid] > target){
-                 high = mid;
+                 high = mid - 1;
              }else{
                  low = mid + 1;
              }
