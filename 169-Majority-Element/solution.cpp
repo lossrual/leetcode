@@ -22,7 +22,7 @@ public:
             if (counts > n / 2) return candidate;
         }
     }
-    int majorityElement(vector<int>& nums){
+    int majorityElement3(vector<int>& nums){
         int count = 0, candidate = 0;
         for(int i = 0; i < nums.size(); i++){
             nums[i] == nums[candidate] ? count++ : count--;
@@ -32,6 +32,25 @@ public:
             }
         }
         return nums[candidate];
+    }
+     int majorityElement(vector<int>& nums){
+        int count = 0, candidate = 0;
+        for(auto c : nums){
+            if(c == candidate) count++;
+            else if(count == 0){
+                candidate = c;
+                count = 1;
+            }else{
+                count--;
+            }
+        }
+        count = 0;
+        for(auto c: nums){
+            if(c == candidate) count++;
+        }
+        if(count > nums.size() / 2)
+            return candidate;
+        return 0;
     }
 };
 
