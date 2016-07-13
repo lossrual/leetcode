@@ -14,25 +14,24 @@ public:
         return 0;
     }
     //O(nlogn)
-    int findDuplicate2(vector<int>& nums) {
-        if(nums.size() == 0) return 0;
-        int begin = 1, end = nums.size() - 1;
-        while(begin < end){
-            int mid = (begin + end) / 2;
+    int findDuplicate(vector<int>& nums) {
+        int low = 0, high = nums.size() - 1;
+        while(low < high){
             int count = 0;
-            for(int num: nums){
+            int mid = (low + high) / 2;
+            for(int num : nums){
                 if(num <= mid)
                     ++count;
             }
             if(count > mid){
-                end = mid;
+                high = mid;
             }else{
-                begin = mid + 1;
+                low = mid + 1;
             }
         }
-        return begin;
+        return low;
     }
-    int findDuplicate(vector<int>& nums) {
+    int findDuplicate2(vector<int>& nums) {
         if(nums.size() == 0) return 0;
         int slow = nums[0];
         int fast = nums[nums[0]];
