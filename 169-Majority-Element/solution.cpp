@@ -26,7 +26,7 @@ public:
         int count = 0, candidate = 0;
         for(int i = 0; i < nums.size(); i++){
             nums[i] == nums[candidate] ? count++ : count--;
-            if(count < 0){
+            if(count == 0){
                 candidate = i;
                 count = 1;
             }
