@@ -9,9 +9,11 @@ public:
         long long dvd = labs(dividend); long long dvs = labs(divisor);
         int digit = 0;
         while(dvs <= (dvd >> 1)){
+            //std::cout << (dvd >> 1) <<'\n';
             dvs <<= 1;
             ++digit;
         }
+        //std::cout << digit << '\n';
         while(digit >= 0){
             if(dvd >= dvs){
                 res += 1 << digit;
@@ -19,6 +21,7 @@ public:
             }
             dvs >>= 1;
             digit--;
+            std::cout << dvd << ' ' << dvs << ' ' << digit << '\n';
         }
         /*
         while(dvd >= dvs){
