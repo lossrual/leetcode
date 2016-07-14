@@ -38,9 +38,9 @@ Test cases had been added to test the overflow behavior.
 
 <div>
 
-<div id="tags" class="btn btn-xs btn-warning">Show Tags</div>
+<div id="tags" class="btn btn-xs btn-warning">Hide Tags</div>
 
-<span class="hidebutton">[Math](/tag/math/)</span></div>
+<span class="hidebutton" style="display: inline;">[Math](/tag/math/)</span></div>
 
 <div>
 
