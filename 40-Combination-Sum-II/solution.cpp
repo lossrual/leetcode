@@ -12,12 +12,12 @@ public:
             res.push_back(path);
             return;
         }
-        //if(target < 0) return;
         int flag = -1;
         for(int i = start; i < candidates.size(); i++){
             if(candidates[i] == flag) continue;
-            path.push_back(candidates[i]);
+            if(candidates[i] > target) return;
             flag = candidates[i];
+            path.push_back(candidates[i]);
             helper(candidates, res, path, target - candidates[i], i + 1);
             path.pop_back();
             
