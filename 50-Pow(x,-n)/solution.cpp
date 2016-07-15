@@ -11,6 +11,15 @@ public:
             n = -n;
         }
         if(n == INT_MIN) return 0;
-        return (n % 2 == 0) ? myPow(x * x, n / 2) : x * myPow(x * x, n / 2);
+        return quick_pow(x, n);
+    }
+    double quick_pow(double x, int n){
+        double res = 1;
+        while(n){
+            if(n & 0x1) res = res * x;
+            x = x * x;
+            n >>= 1;
+        }
+        return res;
     }
 };
