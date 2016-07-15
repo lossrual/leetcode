@@ -11,7 +11,6 @@ public:
             n = -n;
         }
         if(n == INT_MIN) return 0;
-        return (n % 2 == 0) ? myPow(x * x, n / 2) : x * myPow(x * x, n / 2)
-        
+        return (n % 2 == 0) ? myPow(x * x, n / 2) : x * myPow(x * x, n / 2);
     }
 };
