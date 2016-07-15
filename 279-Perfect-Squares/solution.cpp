@@ -1,5 +1,6 @@
 class Solution {
 public:
+/*
     int numSquares(int n) {
         int count = INT_MAX;
         vector<int> vs;
@@ -27,11 +28,12 @@ public:
             path.pop_back();
         }
     }
+   
     bool perfect_square(int n){
-        int tmp = sqrt(n);
+        int tmp = ssqrt(n);
         return tmp * tmp == n;
     }
-    int sqrt(int x){
+    int ssqrt(int x){
         if(x == 0) return 0;
         if(x < 0) return INT_MIN;
         int low = 1, high = x;
@@ -48,4 +50,22 @@ public:
         return low;
         
     }
+     */
+    int numSquares(int n){
+        if(issquare(n)) return 1;
+        while((n & 3) == 0) n >>= 2;
+        if((n & 7) == 7)  return 4;
+        int sqrt_n = (int)sqrt(n);
+        for(int i = 1; i <= sqrt_n; i++){
+            if(issquare(n - i * i))
+                return 2;
+        }
+        return 3;
+    }
+private:
+    bool issquare(int num){
+        int sqrt_num = (int)(sqrt(num));
+        return sqrt_num * sqrt_num == num;
+    }
+    
 };
