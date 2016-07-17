@@ -8,6 +8,11 @@ public:
             slow = square(slow);
             fast = square(square(fast));
         }
+        fast = n;
+        while(slow != fast){
+            slow = square(slow);
+            fast = square(fast);
+        }
         return slow == 1;
     }
     int square(int n){
