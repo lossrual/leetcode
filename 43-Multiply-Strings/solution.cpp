@@ -6,10 +6,10 @@ public:
         string res(m + n, '0');
         reverse(num1.begin(), num1.end());
         reverse(num2.begin(), num2.end());
-        for(int j = 0; j < m; j++){
+        for(int j = 0; j < n; j++){
             int val2 = num2[j] - '0';
             int sum = 0, extra = 0;
-            for(int i = 0; i < n; i++){
+            for(int i = 0; i < m; i++){
                 int val1 = num1[i] - '0';
                 sum = val1 * val2 + res[i + j] - '0' + extra;
                 //std::cout << sum << std::endl;
