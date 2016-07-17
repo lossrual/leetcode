@@ -14,8 +14,8 @@ public:
         int sum = 0;
         while(n){
             int tmp = n % 10;
-            sum += tmp * tmp;
             n /= 10;
+            sum += tmp * tmp;
         }
         return sum;
     }
