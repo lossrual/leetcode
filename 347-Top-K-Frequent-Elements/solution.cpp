@@ -7,14 +7,14 @@ public:
         for(int i = 0; i < nums.size(); i++){
             map_[nums[i]]++;
         }
+        std::cout << (int)map_.size() << std::endl;
         priority_queue<pair<int, int>> pq;
         for(auto it = map_.begin(); it != map_.end(); it++){
-            //second:num, first:frequency
             pq.push(make_pair(it->second, it->first));
-            if(pq.size() > (int)map_.size() - k){
-                res.push_back(pq.top().second);
-                pq.pop();
-            }
+        }
+        for(int i = 0; i < k; i++){
+            res.push_back(pq.top().second);
+            pq.pop();
         }
         return res;
     }
