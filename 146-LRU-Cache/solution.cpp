@@ -22,7 +22,7 @@ public:
                 cacheMap.erase(key);
                 cacheList.pop_back();
             }
-            cacheList.push_front(make_pair<key, value>);
+            cacheList.push_front(make_pair(key, value));
             cacheMap[key] = cacheList.begin();
         }
     }
