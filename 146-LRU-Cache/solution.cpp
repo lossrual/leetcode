@@ -16,17 +16,19 @@ public:
     void set(int key, int value) {
         if(cacheMap.find(key) != cacheMap.end()){
             cacheList.splice(cacheList.begin(), cacheList, cacheMap[key]);
-            cacheMap[key]->second = value;
-        }else if(capacity_ == cacheList.size()){
+            cacheList.begin()->second = value;
+        }else{
+            if(capacity_ == cacheList.size()){
             int key = cacheList.back().first;
             cacheMap.erase(key);
             cacheList.pop_back();
+            }
+            cacheList.push_front(make_pair(key, value));
+            cacheMap[key] = cacheList.begin();
         }
-        cacheList.push_front(make_pair(key, value));
-        cacheMap[key] = cacheList.begin();
     }
 private:
     int capacity_;
-    list<int, int> cacheList;
+    list<pair<int, int>> cacheList;
     unordered_map<int, list<pair<int, int>>::iterator> cacheMap;
 };
