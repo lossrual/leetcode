@@ -24,6 +24,7 @@ public:
             }
             cacheList.push_front(make_pair(key, value));
             cacheMap[key] = cacheList.begin();
+            std::cout << cacheMap[key] << std::endl;
         }
     }
 private:
