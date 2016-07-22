@@ -17,7 +17,7 @@ public:
             cacheList.splice(cacheList.begin(), cacheList, cacheMap[key]);
             cacheList.begin()->second = value;
         }else{
-            if(cacheList.size() == capacity){
+            if(cacheList.size() == capacity_){
                 int key = cacheList.back().first;
                 cacheMap.erase(key);
                 cacheList.pop_back();
