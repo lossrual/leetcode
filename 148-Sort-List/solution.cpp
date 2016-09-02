@@ -35,12 +35,21 @@ public:
         swap(p1->val, start->val);
         return p1;
     }
-    void quicksort(ListNode* start, ListNode* end)
+    void quicksort1(ListNode* start, ListNode* end)
     {
         if(start != end){
             ListNode* pt = partition(start, end);
             quicksort(start, pt);
             quicksort(pt->next, end);
+        }
+    }
+    void quicksort(ListNode* start, ListNode* end)
+    {
+        while(start != end){
+            ListNode* pt = partition(start, end);
+            quicksort(start, pt);
+            start = pt->next;
+            //quicksort(pt->next, end);
         }
     }
     ListNode* sortList(ListNode* head) {
