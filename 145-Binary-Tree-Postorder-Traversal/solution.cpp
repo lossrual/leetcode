@@ -13,10 +13,8 @@ public:
         vector<int> res;
         if(!root) return res;
         stack<TreeNode*> s;
-        TreeNode* cur = root;
-        TreeNode* last = nullptr;
-        /*
-        while(!s.empty() || cur){
+        TreeNode* cur = root, *last = nullptr;
+        while(cur || !s.empty()) {
             if(cur){
                 s.push(cur);
                 cur = cur->left;
@@ -27,21 +25,6 @@ public:
                 }else{
                     res.push_back(top->val);
                     last = top;
-                    s.pop();
-                }
-            }
-        }*/
-        while(!s.empty() || cur){
-            if(cur){
-                s.push(cur);
-                cur = cur->left;
-            }else{
-                TreeNode* top = s.top();
-                if(top->right){
-                    cur = top->right;
-                }else{
-                    res.push_back(top->val);
-                    //last = top;
                     s.pop();
                 }
             }
