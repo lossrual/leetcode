@@ -42,8 +42,8 @@ public:
 class Stack {
 public:
     // Push element x onto stack.
-    queue<int> que1;
-    queue<int> que2;
+    queue<int> q1;
+    queue<int> q2;
     int count = 0;
     void push(int x) {
         while(!q1.empty()){
