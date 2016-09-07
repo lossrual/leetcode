@@ -12,13 +12,14 @@ public:
     // Removes the element on top of the stack.
     void pop() {
         while(que1.size() > 1){
-            top = que1.top();
+            top = que1.front();
             que2.push(top);
         }
         que1.pop();
-        queue<int> temp = q1;
-        q1 = q2;
-        q2 = temp;
+        while(!que2.empty()){
+            int x = que2.front();
+            que1.push(x);
+        }
     }
 
     // Get the top element.
