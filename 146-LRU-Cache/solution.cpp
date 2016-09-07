@@ -1,7 +1,7 @@
 class LRUCache{
 public:
     LRUCache(int capacity) {
-        this->capacity_ = capacity;
+        capacity_ = capacity;
     }
     
     int get(int key) {
@@ -18,10 +18,10 @@ public:
             cacheList.splice(cacheList.begin(), cacheList, cacheMap[key]);
             cacheList.begin()->second = value;
         }else{
-            if(capacity_ == cacheList.size()){
-            int key = cacheList.back().first;
-            cacheMap.erase(key);
-            cacheList.pop_back();
+            if(cacheList.size() == capacity_){
+                int key = cacheList.back().first;
+                cacheMap.erase(key);
+                cacheList.pop_back();
             }
             cacheList.push_front(make_pair(key, value));
             cacheMap[key] = cacheList.begin();
