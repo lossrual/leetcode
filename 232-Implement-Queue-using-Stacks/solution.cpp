@@ -1,9 +1,9 @@
 class Queue {
 public:
-    stack<int> s1;
     // Push element x to the back of queue.
+    stack<int> s1;
+    stack<int> s2;
     void push(int x) {
-        stack<int> s2;
         while(!s1.empty()){
             s2.push(s1.top());
             s1.pop();
@@ -18,11 +18,11 @@ public:
     // Removes the element from in front of queue.
     void pop(void) {
         s1.pop();
-        
     }
+
     // Get the front element.
     int peek(void) {
-        return s1.top();  
+        return s1.top();
     }
 
     // Return whether the queue is empty.
