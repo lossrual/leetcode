@@ -29,6 +29,6 @@ public:
 
     // Return whether the stack is empty.
     bool empty() {
-        return q1.empty();
+        return que1.empty();
     }
 };
