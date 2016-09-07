@@ -3,31 +3,33 @@ public:
     // Push element x onto stack.
     queue<int> que1;
     queue<int> que2;
-    //int a;
+    int count = 0;
     void push(int x) {
         que1.push(x);
-        if(que1.size() == 1) return;
-        int tmp = que1.front();
-        que2.push(tmp);
-        que1.pop();
+        count++;
+       
     }
 
     // Removes the element on top of the stack.
     void pop() {
-        while(que1.size() > 1){
-            int a = que1.front();
-            que2.push(a);
+        while(count > 1){
+            que2.push(que1.front());
+            que1.pop();
+            count--;
         }
         que1.pop();
-        while(!que2.empty()){
-            int x = que2.front();
-            que1.push(x);
+        count--;
+        while(!que2.empty())
+        {
+            que1.push(que2.front());
+            que2.pop();
+            count++;
         }
     }
 
     // Get the top element.
     int top() {
-        return que1.front();
+        return que1.back();
     }
 
     // Return whether the stack is empty.
