@@ -24,7 +24,7 @@ public:
 
     // Get the top element.
     int top() {
-        return top;
+        return que1.front();
     }
 
     // Return whether the stack is empty.
