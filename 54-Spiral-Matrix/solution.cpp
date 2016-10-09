@@ -1,38 +1,30 @@
-class Solution{
+class Solution {
 public:
-vector<int> spiralOrder(vector<vector<int> > &matrix) {
-        vector<int> ans;
-        if (matrix.size() <= 0 || matrix[0].size() <= 0)
-            return ans;
-
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
         int m = matrix.size(), n = matrix[0].size();
-        int x0 = 0, x1 = m - 1; // vertical
-        int y0 = 0, y1 = n - 1; // horizon
-
-        while(x0 <= x1 && y0 <= y1) {    
-            // travel right side
-            for (int j = y0; j <= y1; ++j)
-                ans.push_back(matrix[x0][j]);
+        int x0 = 0, y0 = 0, x1 = m - 1, y1 = n - 1;
+        vector<int> res;
+        if(m <= 0 || n <= 0) return res;
+        while(x0 <= x1 && y0 <= y1){
+            for(int i = y0; i < y1; i++) {
+                res.push_back(matrix[x0][i]);
+            }
             x0++;
-
-            // travel down side
-            for (int i = x0; i <= x1; ++i)
-                ans.push_back(matrix[i][y1]);
+            for(int i = x0; i < x1; i++) {
+                res.push_back(matrix[i][y1]);
+            }
             y1--;
-
-            if (x0 > x1) break;
-            // travel left side
-            for (int j = y1; j >= y0; --j) 
-                ans.push_back(matrix[x1][j]);
+            if(x0 > x1) break;
+            for(int i = y1; i >= y0; i--) {
+                res.push_back(matrix[x1][i]);
+            }
             x1--;
-
-            if (y0 > y1) break;
-            // travel up side
-            for (int i = x1; i >= x0; --i)
-                ans.push_back(matrix[i][y0]);
+            if(y1 < y0) break;
+            for(int i = x1; i >= x0; i--) {
+                res.push_back(matrix[i][y0]);
+            }
             y0++;
         }
-
-        return ans;
+        return res;
     }
 };
