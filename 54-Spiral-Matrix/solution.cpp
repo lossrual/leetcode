@@ -6,11 +6,11 @@ public:
         vector<int> res;
         if(m <= 0 || n <= 0) return res;
         while(x0 <= x1 && y0 <= y1){
-            for(int i = y0; i < y1; i++) {
+            for(int i = y0; i <= y1; i++) {
                 res.push_back(matrix[x0][i]);
             }
             x0++;
-            for(int i = x0; i < x1; i++) {
+            for(int i = x0; i <= x1; i++) {
                 res.push_back(matrix[i][y1]);
             }
             y1--;
