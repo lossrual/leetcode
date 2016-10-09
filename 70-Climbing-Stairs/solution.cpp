@@ -2,7 +2,7 @@ class Solution {
 public:
     int climbStairs(int n) {
         int pre = 0, cur = 1;
-        for(int i = 1; i <= n; i++){
+        while(n--) {
             int tmp = cur;
             cur += pre;
             pre = tmp;
