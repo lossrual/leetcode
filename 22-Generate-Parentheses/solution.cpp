@@ -45,6 +45,8 @@ public:
         return s.empty();
     }
 */
+
+//生成括号组合"((()))"....
     vector<string> generateParenthesis(int n){
         vector<string> res;
         string path = "";
@@ -52,14 +54,11 @@ public:
         return res;
     }
     void helper(vector<string>& res, string path, int l, int r){
-        if(r < l)
-            return;
-        if(l == 0 && r == 0)
-            res.push_back(path);
-        if(l > 0)
+        if(l > r) return;
+        if(l == 0 && r == 0) res.push_back(path);
+        if(l)
             helper(res, path + '(', l - 1, r);
-        if(r > 0)
+        if(r)
             helper(res, path + ')', l, r - 1);
-        
     }
 };
