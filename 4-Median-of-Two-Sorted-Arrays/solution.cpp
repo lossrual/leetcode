@@ -1,5 +1,6 @@
 class Solution {
 public:
+//两个数组找中位数
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         int m = nums1.size(), n = nums2.size();
         int total = m + n;
@@ -10,15 +11,13 @@ public:
         }
     }
     double helper(vector<int>& nums1, int m, vector<int>& nums2, int n, int k, int start1, int start2){
-        if(m > n) return helper(nums2, n, nums1, m, k, start2, start1);
+        if(m < n) helper(nums2, n, nums1, m, k, start2, start1);
         if(m == 0) return nums2[k - 1];
-        if(k == 1) return min(nums1[start1], nums2[start2]);
+        if(k == 1) return max(nums1[0], nums2[0]);
         int a = min(m, k / 2), b = k - a;
-        if(nums1[start1 + a - 1] <= nums2[start2 + b - 1]){
+        if(nums1[start1 + a - 1] <= nums2[start2 + b - 1])//很关键
             return helper(nums1, m - a, nums2, n, k - a, start1 + a, start2);
-        }else{
+        else
             return helper(nums1, m, nums2, n - b, k - b, start1, start2 + b);
-        }
-        
     }
 };
