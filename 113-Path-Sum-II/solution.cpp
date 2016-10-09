@@ -9,9 +9,11 @@
  */
 class Solution {
 public:
+//树上的路径和等于一个target,且记录路径
     vector<vector<int>> pathSum(TreeNode* root, int sum) {
         vector<vector<int>> res;
         vector<int> path;
+        //path.push_back(root->val);
         helper(root, sum, res, path);
         return res;
     }
@@ -19,12 +21,12 @@ public:
         if(!root) return;
         path.push_back(root->val);
         if(!root->left && !root->right){
-            if(sum == root->val){
+            if(root->val == sum) {
                 res.push_back(path);
             }
         }
-        if(root->left) helper(root->left, sum - root->val, res, path);
-        if(root->right) helper(root->right, sum - root->val, res, path);
+        helper(root->left, sum - root->val, res, path);
+        helper(root->right, sum - root->val, res, path);
         path.pop_back();
     }
 };
