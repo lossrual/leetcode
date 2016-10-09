@@ -9,7 +9,7 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        ListNode* l1= headA, l2 = headB;
+        ListNode* l1 = headA; ListNode* l2 = headB;
         if(!l1 || !l2) return nullptr;
         while(l1 && l2 && l1 != l2) {
             l1 = l1->next;
