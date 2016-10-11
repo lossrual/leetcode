@@ -1,17 +1,19 @@
 class Solution {
 public:
-    bool isValid(string s) {
-        stack<char> st;
+     bool isValid(string s) {
+        stack<char> ss;
         unordered_map<char, char> mp;
-        mp['('] = ')', mp['{'] = '}', mp['['] = ']';
-        for(int i = 0; i < s.size(); i++) {
+        mp['('] = ')';
+        mp['['] = ']';
+        mp['{'] = '}';
+        for(int i = 0; i < s.size(); i++){
             if(s[i] == '(' || s[i] == '[' || s[i] == '{')
-                st.push(s[i]);
-            else if(mp[st.top()] != s[i]) {
+                ss.push(s[i]);
+            else if(ss.empty() || mp[ss.top()] != s[i])
                 return false;
-            }else
-                st.pop();
+            else 
+                ss.pop();
         }
-        return st.empty();
-    }
+        return ss.empty();
+     }
 };
