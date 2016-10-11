@@ -13,14 +13,13 @@ public:
     vector<vector<int>> pathSum(TreeNode* root, int sum) {
         vector<vector<int>> res;
         vector<int> path;
-        //path.push_back(root->val);
         helper(root, sum, res, path);
         return res;
     }
     void helper(TreeNode* root, int sum, vector<vector<int>>& res, vector<int>& path){
         if(!root) return;
         path.push_back(root->val);
-        if(!root->left && !root->right){
+        if(!root->left && !root->right) {
             if(root->val == sum) {
                 res.push_back(path);
             }
