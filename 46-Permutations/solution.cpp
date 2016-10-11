@@ -2,32 +2,18 @@ class Solution {
 public:
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> res;
-        if(nums.size() == 0) return res;
+        vector<int> path;
         sort(nums.begin(), nums.end());
-        res.push_back(nums);
-        while(next_permutation(nums)){
-            res.push_back(nums);
-        }
+        helper(res, nums, 0);
         return res;
     }
-    
-    bool next_permutation(vector<int>& nums){
-        //if(nums.size() == 0) return false;
-        int i = nums.size() - 2;
-        while(i >= 0 && nums[i] >= nums[i + 1]){
-            --i;
+    void helper(vector<vector<int>>& res, vector<int>& nums, int start) {
+        if(start == nums.size() - 1)
+            res.push_back(nums);
+        for(int i = start; i < nums.size(); i++) {
+            swap(nums[i], nums[start]);
+            helper(res, nums, start + 1);
+            swap(nums[i], nums[start]);
         }
-        int j = i + 1;
-        if(i >= 0){
-            while(j < nums.size() && nums[j] > nums[i]){
-                ++j;      
-            }
-            --j;
-            swap(nums[i], nums[j]);
-        }else{
-            return false;
-        }
-        reverse(nums.begin() + i + 1, nums.end());
-        return true;
     }
 };
