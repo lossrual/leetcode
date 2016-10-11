@@ -1,18 +1,22 @@
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        int sum = nums[0];
-        int maxn = nums[0];
-        for(int i = 1; i < nums.size(); i++){
-            if(sum < 0){
+        int sum = nums[0], maxp = nums[0];
+        int begin = 0, cur = 0, end = 0;
+        for(int i = 1; i < nums.size(); i++) {
+            if(sum < 0) {
                 sum = nums[i];
-            }else{
+                begin = i;
+            }else {
                 sum += nums[i];
             }
-            if(sum > maxn){
-                maxn = sum;
+            if(sum > maxp){
+                maxp = sum;
+                cur = begin;
+                end = i;
             }
         }
-        return maxn;
+        std::cout << cur << ' ' << end << std::endl;
+        return maxp;
     }
 };
