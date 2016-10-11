@@ -8,6 +8,7 @@ public:
             x = 1 / x;
             n = -n;
         }
+        if(n == INT_MIN) return 0;
         return quickPow(x, n);
     }
     double quickPow(double x, int n) {
