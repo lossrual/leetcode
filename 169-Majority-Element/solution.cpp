@@ -1,56 +1,18 @@
-//大于 n/2 的只有一个
 class Solution {
 public:
-    int majorityElement2(vector<int>& nums) {
-      unordered_map<int, int> mp;
-      for(int i = 0; i< nums.size(); i++){
-          if(++mp[nums[i]] > nums.size() / 2)
-            return nums[i];
-      }
-      return 0;
-    }
-    int majorityElement1(vector<int>& nums) {
-        int n = nums.size();
-        srand(unsigned(time(NULL)));
-        while (true) {
-            int idx = rand() % n;
-            int candidate = nums[idx];
-            int counts = 0; 
-            for (int i = 0; i < n; i++)
-                if (nums[i] == candidate)
-                    counts++; 
-            if (counts > n / 2) return candidate;
-        }
-    }
-    int majorityElement3(vector<int>& nums){
-        int count = 0, candidate = 0;
-        for(int i = 0; i < nums.size(); i++){
-            nums[i] == nums[candidate] ? count++ : count--;
-            if(count == 0){
-                candidate = i;
-                count = 1;
-            }
-        }
-        return nums[candidate];
-    }
-     int majorityElement(vector<int>& nums){
-        int count = 0, candidate = 0;
-        for(auto c : nums){
-            if(c == candidate) count++;
-            else if(count == 0){
+    int majorityElement(vector<int>& nums) {
+        int candidate = nums[0];
+        int cnt = 0;
+        for(auto c: nums) {
+            if(c == candidate)
+                cnt++;
+            else
+                cnt--;
+            if(cnt == 0) {
                 candidate = c;
-                count = 1;
-            }else{
-                count--;
+                cnt = 1;
             }
         }
-        count = 0;
-        for(auto c: nums){
-            if(c == candidate) count++;
-        }
-        if(count > nums.size() / 2)
-            return candidate;
-        return 0;
+        return candidate;
     }
 };
-
